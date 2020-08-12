@@ -1,5 +1,6 @@
 package com.hygogg.snacks.controllers;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,15 @@ public class SnackController {
 	}
 	
 	@RequestMapping("/")
-	public String index(Model model) {
-		model.addAttribute("all", snackService.getAll());
+	public String index(Model model, HttpServletRequest request) {
+		String q = request.getParameter("q");
+		System.out.println(q);
+		if(q == null) {
+			model.addAttribute("all", snackService.getAll());			
+		} else {
+			model.addAttribute("all", snackService.search(q));	
+		}
+		model.addAttribute("healthyOptions", snackService.getHealthyOptions());
 		model.addAttribute("snack", new Snack());
 		return "index.jsp";
 	}

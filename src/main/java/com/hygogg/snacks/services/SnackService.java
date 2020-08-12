@@ -46,4 +46,12 @@ public class SnackService {
 		snackRepo.deleteById(id);
 	}
 	
+	public List<Snack> search(String q) {
+		return snackRepo.findByNameContaining(q);
+	}
+	
+	public List<Snack> getHealthyOptions() {
+		return snackRepo.top3LowCal();
+	}
+	
 }

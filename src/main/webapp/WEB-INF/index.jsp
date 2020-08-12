@@ -39,6 +39,10 @@
                 </form:form>           
             </div>
             <div class="col-sm-8">  
+                <form class="form-inline mb-3">
+                    <input type="search" placeholder="Search" name="q" class="form-control" />
+                    <input type="submit" value="Search" class="btn btn-outline-info" />
+                </form>
                 <table class="table table-striped">
                     <tbody>
                         <tr>
@@ -62,6 +66,8 @@
                 </table>  
             </div>
         </div>
+        
+        ${healthyOptions}
     </div>
 
 </body>
